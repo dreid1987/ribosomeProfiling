@@ -4,14 +4,18 @@ One-step ribosome profiling analysis
 The objective of this software is to create a single tool that can execute analysis of ribosome profiling data with a single step, without the need to seek out the several programs that are typically required for this analysis.
 
 INPUT:
-fastq files from deep sequencing analysis
-A gtf (gene annotation) file that includes start and stop codons
-A set of fa (fasta format) genome sequence data
+1. fastq files from deep sequencing analysis
+
+2. A gtf (gene annotation) file that includes start and stop codons
+
+3. A set of fa (fasta format) genome sequence data
 
 OUTPUT:
-totalExpression.csv: a tab-separated spreadsheet that indicates the level of expression for each gene (expressed as RPKM). This may be used for downstream statistical analysis.
-individGenes: graphs of the distribution of ribosomes on each mRNA
-riboPosition: metagene plots that indicate the positions of ribosomes relative to the start codon across the transcriptome
+1. totalExpression.csv: a tab-separated spreadsheet that indicates the level of expression for each gene (expressed as RPKM). This may be used for downstream statistical analysis.
+
+2. individGenes: graphs of the distribution of ribosomes on each mRNA
+
+3. riboPosition: metagene plots that indicate the positions of ribosomes relative to the start codon across the transcriptome
 
 
 QUICK START
@@ -65,9 +69,13 @@ CUSTOMIZATION
 There are several variables in the analysis that the user may wish to change. For each of these, open 'diff.py' in a text editor and change the appropriate number at the top of the file.
 
 readCutoff: the number of reads that must map to a gene in order for it to be considered for analysis (default=3)
+
 individReadCutoff: the number of reads that must map to a gene for it to be plotted in the individGenes output (default=2500)
+
 posxmin: the minimum position on the metagene plot (in the ribosomePos folder) relative to the start codon (default=-20)
+
 posxmax: the maximum position on the metagene plot (in the ribosomePos folder) relative to the start codon (default=150)
+
 ribo5Add: number of nucleotides to add to the start of the read when defining the position of the ribosome (default=14)
 
 TROUBLESHOOTING
