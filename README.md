@@ -4,6 +4,7 @@ One-step ribosome profiling analysis
 The objective of this software is to create a single tool that can execute analysis of ribosome profiling data with a single step, without the need to seek out the several programs that are typically required for this analysis.
 
 INPUT:
+
 1. fastq files from deep sequencing analysis
 
 2. A gtf (gene annotation) file that includes start and stop codons
@@ -11,6 +12,7 @@ INPUT:
 3. A set of fa (fasta format) genome sequence data
 
 OUTPUT:
+
 1. totalExpression.csv: a tab-separated spreadsheet that indicates the level of expression for each gene (expressed as RPKM). This may be used for downstream statistical analysis.
 
 2. individGenes: graphs of the distribution of ribosomes on each mRNA
