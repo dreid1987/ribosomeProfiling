@@ -99,6 +99,8 @@ for line in open ('transcripts.gtf'):
 					
 					mRNALen[geneToWrite.split('.')[0]]=seqLen
 					seqs[geneToWrite.split('.')[0]]=seq
+					if strand[geneToWrite]=='+':
+						thisCDSStart+=2
 					cdsStart[geneToWrite.split('.')[0]]=thisCDSStart-1
 					cdsStop[geneToWrite.split('.')[0]]=thisCDSStop
 					mRNALen[geneToWrite.split('.')[0]]=seqLen
@@ -151,5 +153,4 @@ for gene in transcripts.keys():
 		f+=1
 writeIndex.close()
 writeDatabase.close()
-
 
