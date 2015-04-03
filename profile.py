@@ -86,6 +86,11 @@ if not os.path.isdir('mapped'):
 
 
 readFiles=os.listdir('reads/')
+touse=[]
+for fName in readFiles:
+	if fName.split('.')[0]=='fastq':
+		touse.append(fName)
+readFiles=touse
 print 'What is the 3\' adapter to trim?'
 print "Enter 'N' to use the default NEB or Illumina adapters, or enter your own sequence"
 toTrim = raw_input('> ')
