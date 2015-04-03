@@ -21,9 +21,11 @@ OUTPUT:
 QUICK START
 ----------------------
 1. Create a work folder
+
 	Make a new folder where you will perform ribosome profiling analysis. Extract all of the files included in this package into this new folder
 
 2. Downloading reference sequences
+
 	This analysis requires a reference genome to map reads to. These can be downloaded in whole from Illumina iGenomes: http://ccb.jhu.edu/software/tophat/igenomes.shtml
 
 	After downloading a reference genome, extract the entire compressed package into a folder called 'database' in your work folder.
@@ -33,14 +35,21 @@ QUICK START
 		2. a set of fa files (fasta format) that indicate the sequence of each chromosome, all in one file.
 
 3. Extract deep sequencing reads into the 'reads' folder
+
 	Most deep sequencing reads are downloaded as compressed .fastq files. Use any decompression utility (eg 7zip) to extract these files into a folder called 'reads' that is in your work folder
+
 	Each of the different .fastq files will be analyzed and quantified separately
+	
 	You may use both ribosome profiling and mRNA-seq data as input. Each will be quantified identically
 	
 4. Execute analysis
+
 	Open Terminal and navigate to your work folder. 
+	
 	Type in 'python profiling.py'
+	
 	After the program starts, indicate the name of your reference genome and the primers that you used in library preparation. The analysis will then execute without the need for further input
+	
 	This analysis may take several hours to execute, depending on your reference genome and the size and number of your deep sequencing libraries
 
 
