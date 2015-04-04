@@ -1,5 +1,5 @@
 import os
-
+import sys
 
 
 def which(program): #From http://stackoverflow.com/questions/377017/test-if-executable-exists-in-python
@@ -50,7 +50,7 @@ except ImportError:
 	os.system('sudo apt-get install python-biopython')
 
 
-print 'What is the name of your reference genome file?'
+print '\n\nWhat is the name of your reference genome file?'
 print 'Before running this program, download a Refseq genome and extract it into a folder called \'database\' that is inside your currect directory'
 print 'You may download these from http://ccb.jhu.edu/software/tophat/igenomes.shtml.'
 print 'Example input: Homo_sapiens'
@@ -60,8 +60,10 @@ refFolder = raw_input('> ')
 
 #Find database
 databaseFolder='database/' + refFolder + '/'
-databaseFolder=addNextFolder(databaseFolder)
-databaseFolder=addNextFolder(databaseFolder)
+i=0
+while 'Annotation' not in os.listdir(databaseFolder) and i<6:
+	databaseFolder=addNextFolder(databaseFolder)
+	i+=1
 	
 gtfOK = os.path.isfile(databaseFolder + 'Annotation/Genes/genes.gtf') 
 if gtfOK:
@@ -88,15 +90,15 @@ if not os.path.isdir('mapped'):
 readFiles=os.listdir('reads/')
 touse=[]
 for fName in readFiles:
-	if fName.split('.')[0]=='fastq':
+	if fName.split('.')[1]=='fastq':
 		touse.append(fName)
 readFiles=touse
-print 'What is the 3\' adapter to trim?'
+print '\n\nWhat is the 3\' adapter to trim?'
 print "Enter 'N' to use the default NEB or Illumina adapters, or enter your own sequence"
 toTrim = raw_input('> ')
 if toTrim=='N':
 	toTrim='AAGATCGGAAGAGCACACGTCT'
-
+	
 print '\n Trimming adapters from reads using Cutadapt'	
 for readFile in readFiles:
 	os.system('cutadapt -a ' + toTrim +' --discard-untrimmed -m 20 reads/' + readFile + ' -o trim/' + readFile)
@@ -119,6 +121,19 @@ os.system('bowtie-build database/chosenTranscripts database/chosenTranscripts')
 for readFile in readFiles:
 	os.system('bowtie -p 3 --norc -v 0 database/chosenTranscripts trim/' + readFile + ' mapped/' + readFile.split('.')[0] + '.map')
 
+for fileName in readFiles:
+	if os.path.getsize('mapped/' + fileName.split('.')[0] + '.map') < 10000:
+		print '\n\nMapping of ' + fileName.split('.')[0] + ' failed. Were the correct adapters trimmed? Check your library preparation protocol and make sure that you entered the sequence that was appended to the 3\' end of your RNA.'
+		print 'Do you want to see a sampling of reads from your file? The adapter is the sequence that is shared among all of these sequences towards the end.'
+		seeReads= raw_input('(Y/N) > ')
+		if seeReads=='Y' or seeReads=='y' or seeReads=='yes':
+			with open('reads/' + fileName) as seqfile:
+				first = [next(seqfile) for x in xrange(40)]
+			i=0
+			for line in first:
+				if i%4==1:
+					print line.strip('\n')
+		sys.exit()
 
 
 if not os.path.isdir('plots'):
