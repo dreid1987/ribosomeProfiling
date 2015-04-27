@@ -79,9 +79,9 @@ These are the steps that this program automatically executes:
 							http://ccb.jhu.edu/software/tophat/index.shtml
 							http://cole-trapnell-lab.github.io/cufflinks/
 4. Mapping of deep sequencing reads
-		Uses Bowtie with mostly default settings, allowing for no mismatches
+		Uses Bowtie with mostly default settings, allowing for no mismatches.
 							http://bowtie-bio.sourceforge.net/
-5. Assessment of ribosome profiling mapped reads and output generation
+5. Assessment of ribosome profiling mapped reads and output generation.
 		Uses diff.py
 
 CUSTOMIZATION
