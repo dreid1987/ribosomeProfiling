@@ -26,6 +26,7 @@ This workflow requires a Linux OS to work. If you don't have a Linux computer or
 
 Alternatively, there are many ways to install Linux alongside Windows or OS X. Some of them are discussed here: 
 Windows: https://help.ubuntu.com/community/WindowsDualBoot 
+
 Mac: https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation
 
 Once you have access to Linux...
