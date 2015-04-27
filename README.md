@@ -22,6 +22,12 @@ OUTPUT:
 
 QUICK START
 ----------------------
+This workflow requires a Linux OS to work. If you don't have a Linux computer or easy access to one, there are a few good options. The most straightforward approach for Windows users is to install Wubi (https://wiki.ubuntu.com/WubiGuide), which allows for installation of Ubuntu, a Linux distribution, as easily as any other program. 
+
+Alternatively, there are many ways to install Linux alongside Windows or OS X. Some of them are discussed here: Windows: https://help.ubuntu.com/community/WindowsDualBoot Mac: https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation
+
+Once you have access to Linux...
+
 1. Create a work folder
 
 	Make a new folder where you will perform ribosome profiling analysis. Extract all of the files included in this package into this new folder
