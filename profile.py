@@ -107,7 +107,7 @@ def loadReads(folder,fileName):
 					
 		#Make metagene profile
 		dist=[]
-		write=open('plots/riboPosition/' + prefix+t,'w')
+		write=open('plots/riboPosition/' + folder,'w')
 		x=range(posxmin,posxmax)
 		for pos in range(posxmax-posxmin):
 			build=[]
